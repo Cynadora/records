@@ -31,7 +31,7 @@ $requete->closeCursor();
   <!-- La class conteneur-fluid va occuper toute la largeur de la page disponible -->
   <nav class="navbar navbar-expand-lg bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand">Liste des disques (15)</a>
+      <a class="navbar-brand">Liste des disques</a>
 
       <a href="disc_new.php" class="btn btn-primary">Ajouter</a>
     </div>

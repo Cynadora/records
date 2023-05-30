@@ -20,7 +20,7 @@ $price = (isset($_POST['price']) && $_POST['price'] != "") ? $_POST['price'] : N
 // En cas d'erreur, on renvoie vers le formulaire
 if ($disc_id == Null || $title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null) {
     ///////////ou header("location: index.php);
-    header("Location: disc_form.php");
+    header("Location: index.php");
     //Exécution du scrip terminé
     exit;
 }
