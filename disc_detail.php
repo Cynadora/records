@@ -38,34 +38,34 @@ $requete->closeCursor();
                     <div class="form-group col-sm-6">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" value="<?php echo $disc['disc_title']; ?>"
-                            required>
+                        disabled>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="artist">Artist</label>
                         <input type="text" class="form-control" id="artist" value="<?php echo $disc['artist_name']; ?>"
-                            required>
+                        disabled>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
                         <label for="year">Year</label>
                         <input type="text" class="form-control" id="inputYear" value="<?php echo $disc['disc_year']; ?>"
-                            required>
+                            disabled>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="genre">Genre</label>
                         <input type="text" class="form-control" id="genre" value="<?php echo $disc['disc_genre']; ?>"
-                            required>
+                        disabled>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="label">Label</label>
                         <input type="text" class="form-control" id="label" value="<?php echo $disc['disc_label']; ?>"
-                            required>
+                        disabled>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="price-input">Price</label>
                         <input type="number" class="form-control" id="price-input" name="price" step="0.01" min="0"
-                            value="<?php echo $disc['disc_price']; ?>" required>
+                            value="<?php echo $disc['disc_price']; ?>" disabled>
                     </div>
                     </label>
                 </div>
@@ -78,7 +78,9 @@ $requete->closeCursor();
 
                 <a href="disc_form.php?id=<?= $disc['disc_id'] ?>" class="btn btn-warning">Modification</a>
 
-                <a href="script_disc_delete.php?id=<?= $disc["disc_id"] ?>" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce disque ?');" class="btn btn-secondary">Suppression</a>
+                <a href="script_disc_delete.php?id=<?= $disc["disc_id"] ?>"
+                    onclick="return confirm('Etes-vous sûr de vouloir supprimer ce disque ?');"
+                    class="btn btn-secondary">Suppression</a>
 
                 <a href="index.php" class="btn btn-info">Retour</a>
         </div>

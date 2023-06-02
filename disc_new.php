@@ -16,13 +16,14 @@ $requete->closeCursor();
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style##.css">
-  <title>Document</title>
+  <title>Disc_new</title>
 
 <body>
   <!-- La class conteneur-fluid va occuper toute la largeur de la page disponible -->
@@ -32,24 +33,19 @@ $requete->closeCursor();
       <div class="container-fluid">
         <a class="navbar-brand">Ajouter un vinyle</a>
     </nav>
-
-
-    <br>
+    <!--Grâce à enctype, le navigateur du visiteur sait qu'il s'apprête à envoyer des fichiers.-->
     <form action="script_disc_ajout.php" id="formulaire" method="post" enctype="multipart/form-data">
-
       <!--Input Title-->
       <div class="mb-3 row">
         <label class="col-sm-12 col-form-label" for="title">Title</label>
         <div class="col-sm-12">
-          <input class="form-control" type="text" id="inputTitle" placeholder="Enter title ">
+          <input class="form-control" type="text" name="title" placeholder="Enter title">
         </div>
       </div>
-      <br>
-
       <!--Liste déroulante / Sélection de l'artiste du disque-->
-      <label class="col-sm-12 col-form-label" for="title">Artist</label>
+      <label class="col-sm-12 col-form-label">Artist</label>
       <div class="input-group">
-        <select class="form-select" id="inputGroupSelect">
+        <select class="form-select" name="artist">
           <option selected>Choisir un artiste</option>
           <?php
           foreach ($artist as $unArtiste) { ?>
@@ -58,39 +54,30 @@ $requete->closeCursor();
           }
           ?>
         </select>
-        <label class="input-group-text" for="inputGroupSelect"></label>
+        <label class="input-group-text"></label>
       </div>
-      <br>
-
       <!--Input Année-->
       <div class="mb-3 row">
-        <label class="col-sm-12 col-form-label" for="year">Year</label>
+        <label class="col-sm-12 col-form-label">Year</label>
         <div class="col-sm-12">
-          <input class="form-control" type="text" id="inputYear" placeholder="Enter year ">
+          <input class="form-control" type="text" name="year" placeholder="Enter year ">
         </div>
       </div>
-      <br>
-
       <!--Input Genre-->
       <div class="mb-3 row">
-        <label class="col-sm-12 col-form-label" for="genre">Genre</label>
+        <label class="col-sm-12 col-form-label">Genre</label>
         <div class="col-sm-12">
-          <input class="form-control" type="text" id="inputTitre" placeholder="Enter genre (Rock, Pop, Prog...) ">
+          <input class="form-control" type="text" name="genre" placeholder="Enter genre (Rock, Pop, Prog...) ">
         </div>
       </div>
-      <br>
-
       <!--Input Label-->
       <div class="mb-3 row">
-        <label class="col-sm-12 col-form-label" for="label">Label</label>
+        <label class="col-sm-12 col-form-label">Label</label>
         <div class="col-sm-12">
-          <input class="form-control" type="text" id="inputLabel"
+          <input class="form-control" type="text" name="label"
             placeholder="Enter label (EMI, Warner, PolyGram, Univers sale...)">
-
         </div>
       </div>
-      <br>
-
       <!--Input Prix-->
       <div class="form-group">
         <label for="price-input">Price</label>
@@ -98,29 +85,22 @@ $requete->closeCursor();
           <div class="input-group-prepend">
             <!-- <span class="input-group-text">$</span>-->
           </div>
-          <input type="number" class="form-control" id="price-input" name="price" step="0.01" min="0">
+          <input type="number" class="form-control" name="price">
         </div>
       </div>
-      <br>
-
       <!--Input Picture aucun fichier n'a été sélectionné-->
       <div class="form-group">
-        <label for="picture-input">Picture</label>
+        <label>Picture</label>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="picture-input" name="picture">
-
-          <label class="custom-file-label" for="picture-input"></label>
+          <input type="file" class="custom-file-input" name="picture">
         </div>
       </div>
-      <br>
-    <!-- Bouton envoyer et annuler -->
-      <button type="submit" class="btn btn-warning">Ajouter</button>
-      <a href="index.php" class="btn btn-primary">Retour</a>
-
-      
+      <!-- Bouton envoyer et annuler -->
+      <div class="py-3">
+        <button type="submit" class="btn btn-warning">Ajouter</button>
+        <a href="index.php" class="btn btn-primary">Retour</a>
+      </div>
     </form>
-
-    <br> <br>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>

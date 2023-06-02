@@ -45,106 +45,78 @@ $requete2->closeCursor();
       <div class="container-fluid">
         <a class="navbar-brand">Modifier un vinyle</a>
     </nav>
-    <br>
-
-
     <form action="script_disc_modif.php" id="formulaire" method="post" enctype="multipart/form-data">
-    
-      <fieldset>
-        <!-- Création d'un champ caché/La valeur du champ est récupérée à partir de la variable $id           -->
-        <input type="hidden" name="id" value="<?= $id ?>">
 
-        <div class="mb-3 row">
-          <label class="col-sm-12 col-form-label" for="title">Title</label>
-          <div class="col-sm-12">
-            <input class="form-control" type="text" disc value id="inputTitle" placeholder="Enter title ">
-          </div>
+      <!-- Création d'un champ caché/La valeur du champ est récupérée à partir de la variable $id           -->
+      <input type="hidden" name="id" value="<?= $id ?>">
+
+      <div class="mb-3 row">
+        <label class="col-sm-12 col-form-label">Title</label>
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="title" value="<?= $disc['disc_title'] ?>">
         </div>
-        <br>
-
-        <!--Liste déroulante / Sélection de l'artiste du disque-->
-        <label class="col-sm-12 col-form-label" for="title">Artist</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Choisir un artiste</option>
+      </div>
+      <!--Liste déroulante / Sélection de l'artiste du disque-->
+      <label class="col-sm-12 col-form-label">Artist</label>
+      <select class="form-select" name="artist">
+        <option>Choisir un artiste</option>
+        <?php
+        foreach ($artists as $unArtiste) { ?>
+          <option <?php if ($unArtiste['artist_id'] == $disc['artist_id'])
+            echo "selected" ?>
+              value="<?= $unArtiste['artist_id'] ?>">
+            <?= $unArtiste['artist_name'] ?>
+          </option>
           <?php
-          foreach ($artists as $unArtiste) { ?>
-            <option value="<?= $unArtiste['artist_id'] ?>"><?= $unArtiste['artist_name'] ?></option>
-            <?php
-          }
-          ?>
-        </select>
-
-
-        <br>
-
-        <!--Input Année-->
-        <div class="mb-3 row">
-          <label class="col-sm-12 col-form-label" for="year">Year</label>
-          <div class="col-sm-12">
-            <input class="form-control" type="text" id="inputYear" placeholder="Enter year ">
-          </div>
+        }
+        ?>
+      </select>
+      <!--Input Année-->
+      <div class="mb-3 row">
+        <label class="col-sm-12 col-form-label">Year</label>
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="year" value="<?= $disc['disc_year'] ?>">
         </div>
-        <br>
-
-        <!--Input Genre-->
-        <div class="mb-3 row">
-          <label class="col-sm-12 col-form-label" for="genre">Genre</label>
-          <div class="col-sm-12">
-            <input class="form-control" type="text" id="inputTitre" placeholder="Enter genre (Rock, Pop, Prog...) ">
-          </div>
+      </div>
+      <!--Input Genre-->
+      <div class="mb-3 row">
+        <label class="col-sm-12 col-form-label" for="genre">Genre</label>
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="genre" value="<?= $disc['disc_genre'] ?>">
         </div>
-        <br>
-
-        <!--Input Label-->
-        <div class="mb-3 row">
-          <label class="col-sm-12 col-form-label" for="label">Label</label>
-          <div class="col-sm-12">
-            <input class="form-control" type="text" id="inputLabel"
-              placeholder="Enter label (EMI, Warner, PolyGram, Univers sale...)">
-
-          </div>
+      </div>
+      <!--Input Label-->
+      <div class=" mb-3 row">
+        <label class="col-sm-12 col-form-label" for="label">Label</label>
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="label" value="<?= $disc['disc_label'] ?>">
         </div>
-        <br>
-
-        <!--Input Prix-->
-        <div class="form-group">
-          <label for="price-input">Price</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <!-- <span class="input-group-text">$</span>-->
-            </div>
-            <input type="number" class="form-control" id="price-input" name="price" step="0.01" min="0" required>
+      </div>
+      <!--Input Prix-->
+      <div class="form-group">
+        <label for="price-input">Price</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
           </div>
+          <input type="number" class="form-control" name="price" value="<?= $disc['disc_price'] ?>" required>
         </div>
-        <br>
-  </div>
-  <br>
-
-  <!--UPLOAD du fichier-->
-  <label for="picture">Picture</label>
-
-
+      </div>
+      <label for="picture">Picture</label>
       <div>
-      <button type="button" class="btn btn-primary">Choisir un fichier</button> Aucun fichier choisi
-    </div>
-    <div>
-      <br>
-      <img class="img w-25" src="assets/img/<?php echo $disc['disc_picture'] ?>" alt="picture" title="Picture">
-    </div>
-    <div>
-      <br>
-      <button type="submit" class="btn btn-primary">Modifier</button>
-      <a href="index.php" class="btn btn-warning">Retour</a>
-    </div>
-  </div>
-  <br>
-
-  <fieldset>
+        <input type="file" name="picture">
+      </div>
+      <div>
+        <img class="img w-25" src="assets/img/<?php echo $disc['disc_picture'] ?>" alt="picture" title="Picture">
+      </div>
+      <div class="py-3">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+        <a href="index.php" class="btn btn-warning">Retour</a>
+      </div>
     </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
