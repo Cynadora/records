@@ -58,7 +58,7 @@ INSERT INTO disc (disc_id, disc_title, disc_year, disc_picture, disc_label, disc
 CREATE TABLE users (
 	user_id			INT PRIMARY KEY AUTO_INCREMENT,
 	username		VARCHAR(50),
-	password		VARCHAR(255),
+	password		VARCHAR(255)
 );
 
 insert INTO users(user_id, username, password) VALUES
