@@ -36,8 +36,8 @@ $requete->closeCursor();
        
       </div> 
       <a href="disc_new.php" class="btn btn-primary">Ajouter</a>
-        <a href="disc_new.php" class="btn btn-primary">Login</a>
-        <a href="disc_new.php" class="btn btn-primary">Register</a>
+        <a href="login.php" class="btn btn-primary">Login</a>
+        <a href="register.php" class="btn btn-primary">Register</a>
     </nav>
     <br><br>
 
